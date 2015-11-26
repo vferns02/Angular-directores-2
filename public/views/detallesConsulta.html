@@ -1,0 +1,22 @@
+<div class="container" ng-controller="directoresCtrl"  ng-init="cargarDirectores()">
+
+    <table class="table">
+        <caption ><h3>Detalles del director</h3>{{directores.nombre}}</caption>
+        <thead>
+        <tr>
+            <th> Pelicula </th>
+            <th> Sinopsis </th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-switch-when="director in directores| orderBy:'pelicula'">
+
+            <td> {{director.pelicula}} </td>
+            <td> {{director.sinopsis}} </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>

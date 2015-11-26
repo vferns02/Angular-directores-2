@@ -1,0 +1,51 @@
+<div class="container" ng-controller="directoresCtrl"  ng-init="cargarDirectores()">
+    <h1> Agregar nuevo Director</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Steven" ng-model="nombre">
+
+                <label for="apellidos">Apellido</label>
+                <input type="text" class="form-control" id="apellidos" placeholder="Spielberg" ng-model="apellidos">
+                <label for="edad">Edad</label>
+                <input type="text" class="form-control" id="edad" placeholder="56" ng-model="edad">
+                <label for="pelicula">Nombre de Pelicula: </label>
+                <input type="text" class="form-control" id="pelicula" placeholder="Tiburón" ng-model="pelicula"/>
+                <label for="sinopsis">Sinopsis de la Pelicula: </label>
+                <textarea class="form-control" name="sinopsis" id="sinopsis" cols="60" rows="10" placeholder="Sinopsis" ng-model="sinopsis"></textarea><br/>
+
+        </div>
+        <div class="row">
+            <div class="span4">
+                <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarDirector()" />
+                <input type="button" value="Limpiar formulario" class="btn btn-danger" ng-click="limpiarDatos()" />
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <caption ><h3>Directores Agregados</h3></caption>
+        <thead>
+        <tr>
+            <th> Nombre </th>
+            <th> Apellidos </th>
+            <th> Edad </th>
+            <th> Pelicula </th>
+            <th> Sinopsis </th>
+            <th>  </th>
+            <th>  </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="director in directores| orderBy:'nombre'">
+            <td> {{director.nombre}} </td>
+            <td> {{director.apellidos}} </td>
+            <td> {{director.edad}} </td>
+            <td> {{director.pelicula}} </td>
+            <td> {{director.sinopsis}} </td>
+
+            <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarDirector(director._id)"> Eliminar</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
