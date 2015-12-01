@@ -1,7 +1,7 @@
-<div class="container" ng-controller="consultaCtrl"  ng-init="cargarDirectores()">
+<div class="container" ng-controller="directoresCtrl"  >
 
     <table class="table">
-        <caption ><h3>Detalles del director</h3>{{directores.nombre}}</caption>
+        <caption ><h3>Detalles del director</h3></caption>
         <thead>
         <tr>
             <th> Pelicula </th>
@@ -10,13 +10,6 @@
 
         </tr>
         </thead>
-        <tbody>
-        <tr ng-repeat=" director in directores| orderBy:'pelicula'">
 
-            <td> {{director.pelicula}} </td>
-            <td> {{director.sinopsis}} </td>
-
-        </tr>
-        </tbody>
     </table>
 </div>

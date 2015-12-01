@@ -19,11 +19,14 @@ angular.module("directores").config(function($stateProvider, $urlRouterProvider)
             url:"/consultar",
             templateUrl:"views/consultarDirector.html"
         })
-        .state("consultar.detalles",{
-            url:"/detalles",
+        .state("consultar.detalle",{
+            url:"/detalle",
             templateUrl:"views/detallesConsulta.html"
 
+
+
         })
+
 
 });
 

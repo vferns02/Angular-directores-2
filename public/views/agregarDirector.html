@@ -1,5 +1,7 @@
 <div class="container" ng-controller="directoresCtrl"  ng-init="cargarDirectores()">
-
+    <div elemento-barra
+         barra="barra">
+    </div>
     <h1> Agregar nuevo Director</h1>
 
     <form class="form-horizontal">
@@ -12,7 +14,7 @@
                 <label for="edad">Edad</label>
                 <input type="text" class="form-control" id="edad" placeholder="56" ng-model="edad">
                 <label for="pelicula">Nombre de Pelicula: </label>
-                <input type="text" class="form-control" id="pelicula" placeholder="Tiburón" ng-model="pelicula"/>
+                <input type="text" class="form-control" id="pelicula" placeholder="Tiburón" ng-model="pelicula" />
                 <label for="sinopsis">Sinopsis de la Pelicula: </label>
                 <textarea class="form-control" name="sinopsis" id="sinopsis" cols="60" rows="10" placeholder="Sinopsis" ng-model="sinopsis"></textarea><br/>
 
@@ -21,11 +23,15 @@
             <div class="span4">
                 <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarDirector()" />
                 <input type="button" value="Limpiar formulario" class="btn btn-danger" ng-click="limpiarDatos()" />
+                <input type="button" value="Mostrar directores" class="btn btn-warning" ng-click="toggle()" />
             </div>
         </div>
     </form>
 
-    <table class="table">
+
+
+
+    <table class="table" ng-show="mostrar">
         <caption ><h3>Directores Agregados</h3></caption>
         <thead>
         <tr>
@@ -46,7 +52,8 @@
             <td> {{director.pelicula}} </td>
             <td> {{director.sinopsis}} </td>
 
-            <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarDirector(director._id)"> Eliminar</a> </td>
+            <td> <a  class="btn btn-danger" ng-click="eliminarDirector(director._id)"> Eliminar</a> </td>
+
         </tr>
         </tbody>
     </table>

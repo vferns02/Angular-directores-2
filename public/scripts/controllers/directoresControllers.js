@@ -44,6 +44,30 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
             });
 
     };
+
+    $scope.detallesDirector= function(indice) {
+        $http({
+            method: 'GET',
+            url: '/recuperar',
+            params: {
+                _id: indice
+
+            }
+
+        }).
+            success(function(data) {
+                if(typeof(data)=== 'object'){
+                    $scope._id = data._id;
+                    $scope.pelicula = data.pelicula;
+                    $scope.sinopsis = data.sinopsis;
+                } else{
+                    alert('Error al recuperar el 1director.');
+                }
+            }).
+            error(function() {
+                alert('Error al  recuperar el Director.');
+            });
+    };
     $scope.eliminarDirector = function(indice) {
         $http({
             method: 'POST',
@@ -63,6 +87,8 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
             error(function() {
                 alert('Error al intentar eliminar el 2director.');
             });
+
+
     };
     $scope.limpiarDatos = function() {
         $scope._id = null;
@@ -72,6 +98,10 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
         $scope.pelicula = "";
         $scope.sinopsis="";
 
+    };
+    $scope.mostrar = false;
+    $scope.toggle = function() {
+        $scope.mostrar = !$scope.mostrar;
     };
 
 });

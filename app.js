@@ -58,7 +58,7 @@ app.get("/listar", function(req,res){
     });
 });
 app.get("/recuperar" , function (req, res) {
-    Director.findById(req.query._id, function(err,documento){
+    Director.findById({_id: req.query._id}, function(err,documento){
         if(err){
             res.send("Error");
         }else{
@@ -72,7 +72,8 @@ app.post("/guardar", function (req, res) {
        apellidos:req.query.apellidos,
        edad:req.query.edad,
        pelicula:req.query.pelicula,
-       sinopsis:req.query.sinopsis
+       sinopsis:req.query.sinopsis,
+       _id:req.query._id
    }) ;
     director.save(function(err,documento){
        if(err){

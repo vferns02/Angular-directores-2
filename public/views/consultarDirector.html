@@ -1,7 +1,10 @@
-<div class="container" ng-controller="consultaCtrl"  ng-init="cargarDirectores()">
+<div class="container" ng-controller="directoresCtrl" ng-init="cargarDirectores()" xmlns="http://www.w3.org/1999/html">
+    <div elemento-barra
+         barra="barra">
+    </div>
 
     <table class="table">
-        <caption ><h3>Lista de Directores</h3></caption>
+     <h1>Lista de Directores</h1>
         <thead>
         <tr>
             <th> Nombre </th>
@@ -11,12 +14,53 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="director in directores| orderBy:'nombre'"
-            elemento-director
-            director="director" >
+        <tr ng-repeat="director in directores| orderBy:'nombre'">
 
+            <td>{{director.nombre}}</td>
+            <td>{{director.apellidos}}</td>
+            <td>{{director.edad}}</td>
+
+            <td> <button class="btn btn-info"  id="ver"  ng-click="detallesDirector(director._id)"> Ver</button></td>
         </tr>
         </tbody>
     </table>
-    <div ui-view></div>
+
+    <table class="table">
+        <caption ><h3>Detalles del director</h3></caption>
+        <thead>
+        <tr>
+            <th> Pelicula </th>
+            <th> Sinopsis </th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <td>{{pelicula}}</td>
+        <td>{{sinopsis}}</td>
+        </tbody>
+
+    </table>
+
 </div>
+
+
+
+
+<!--
+
+<div>
+    <table class="table">
+        <caption>Detalles</caption>
+        <thead>
+        <tr>
+            <th>Pelicula</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td >{{director.pelicula}}</td>
+        </tbody>
+    </table>
+</div>
+<td><input type="text" style="border: none; background-color: transparent"  ng-model="pelicula"/></td>
+       <td><textarea type="text" style="border: none; background-color: transparent" ;cols="60" ;rows="10" ng-model="sinopsis"/></td>-->
