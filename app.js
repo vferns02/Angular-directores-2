@@ -66,22 +66,23 @@ app.get("/recuperar" , function (req, res) {
         }
     });
 });
-app.post("/guardar", function (req, res) {
-   var director = new Director({
-       nombre:req.query.nombre,
-       apellidos:req.query.apellidos,
-       edad:req.query.edad,
-       pelicula:req.query.pelicula,
-       sinopsis:req.query.sinopsis,
-       _id:req.query._id
-   }) ;
-    director.save(function(err,documento){
-       if(err){
-           res.send("Error");
-       } else{
-           res.send(documento);
-       }
-    });
+app.post('/guardar', function(req, res){
+
+        var director = new Director({
+            nombre: req.query.nombre,
+            apellidos: req.query.apellidos,
+            edad: req.query.edad,
+            pelicula: req.query.pelicula,
+            sinopsis: req.query.sinopsis
+        });
+        director.save(function(error, documento){
+            if(error){
+                res.send('Error.');
+            }else{
+                res.send(documento);
+            }
+        });
+
 });
 
 app.post("/eliminar", function (req,res){

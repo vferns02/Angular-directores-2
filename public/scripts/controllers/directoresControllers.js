@@ -12,7 +12,7 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
     $scope.cargarDirectores = function(){
         $http({
             method:"GET",
-            url:"listar"
+            url:"/listar"
         }).success(function(data){
             if(typeof (data) === "object"){
                 $scope.directores=data;
@@ -22,29 +22,30 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
         });
     };
 
-    $scope.guardarDirector =function(){
+    $scope.guardarDirector = function() {
         $http({
-            method: "POST",
-            url:"/guardar",
-            params:{
-                nombre:$scope.nombre,
-                apellidos:$scope.apellidos,
-                edad:$scope.edad,
-                pelicula:$scope.pelicula,
-                sinopsis:$scope.sinopsis,
-                _id:$scope._id
+            method: 'POST',
+            url: '/guardar',
+            params: {
+                nombre: $scope.nombre,
+                apellidos: $scope.apellidos,
+                edad: $scope.edad,
+                pelicula: $scope.pelicula,
+                sinopsis: $scope.sinopsis,
+                _id: $scope._id
             }
-        }).success(function (data) {
-            if(typeof (data) ==="object"){
-                $scope.cargarDirectores();
-            }else{
-                alert("Error al guardar el director");
-            }
-
+        })
+            .success(function (data) {
+                if(typeof (data)==='object'){
+                    $scope.cargarDirectores()
+                }else{
+                    alert("Error al cargar el 1Director");
+                }
+            })
+            .error(function(){
+                alert("error al cargar el direcoor");
             });
-
     };
-
     $scope.detallesDirector= function(indice) {
         $http({
             method: 'GET',
@@ -98,10 +99,6 @@ angular.module("directores").controller("directoresCtrl",function($scope,$http){
         $scope.pelicula = "";
         $scope.sinopsis="";
 
-    };
-    $scope.mostrar = false;
-    $scope.toggle = function() {
-        $scope.mostrar = !$scope.mostrar;
     };
 
 });
